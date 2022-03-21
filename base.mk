@@ -58,7 +58,7 @@ pip-compile-upgrade-docker-default:  ## run pip-compile in docker container with
 
 .PHONY: init-pre-commit-default
 init-pre-commit-default:  ## initialize pre-commit
-	pip install --upgrade pre-commit
+	python3 -m pip install --upgrade pre-commit
 	pre-commit install --install-hooks --overwrite
 
 .PHONY: update-pre-commit-default
