@@ -56,13 +56,17 @@ pip-compile-upgrade-docker-default:  ## run pip-compile in docker container with
 	docker-compose exec ${PROJECT_NAME}-django pip-compile requirements.in --upgrade
 	docker-compose exec ${PROJECT_NAME}-django pip-compile requirements-dev.in --upgrade
 
-.PHONY: init-pre-commit-default
-init-pre-commit-default:  ## initialize pre-commit
+.PHONY: pre-commit-init-default
+pre-commit-init-default:  ## initialize pre-commit
 	python3 -m pip install --upgrade pre-commit
 	pre-commit install --install-hooks --overwrite
 
-.PHONY: update-pre-commit-default
-update-pre-commit-default: init-pre-commit-default  ## update pre-commit and hooks
+.PHONY: pre-commit-clean-default
+pre-commit-clean-default:  ## clean pre-commit
+	pre-commit clean
+
+.PHONY: pre-commit-update-default
+pre-commit-update-default: pre-commit-clean-default pre-commit-init-default  ## update pre-commit and hooks
 
 .PHONY: update-config-default
 update-config-default:  ## update config subtree
