@@ -12,6 +12,10 @@ stop-default:  ## stop containers
 restart-default:  ## restart containers
 	docker-compose restart
 
+.PHONY: gitignore
+gitignore:  ## create a .gitignore file from templates
+	bash config/make-gitignore.sh
+
 .PHONY: git-update-default
 git-update-default:  ## git pull as base user
 	if [ "$(shell whoami)" != "base" ]; then sudo -u base git pull; else git pull; fi
