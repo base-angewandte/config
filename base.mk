@@ -8,9 +8,9 @@ start-default:  ## start containers
 stop-default:  ## stop containers
 	docker-compose down
 
-.PHONY: restart-default
-restart-default:  ## restart containers
-	docker-compose restart
+.PHONY: recreate-default
+recreate-default:  ## fully reload the containers (e.g. due to .env file changes)
+	docker-compose up -d --force-recreate
 
 .PHONY: gitignore
 gitignore:  ## create a .gitignore file from templates
