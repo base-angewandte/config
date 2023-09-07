@@ -12,7 +12,7 @@ stop-default:  ## stop containers
 recreate-default:  ## fully reload the containers (e.g. due to .env file changes)
 	docker-compose up -d --force-recreate
 
-.PHONY: gitignore
+.PHONY: gitignore-default
 gitignore:  ## create a .gitignore file from templates
 	bash config/make-gitignore.sh
 
