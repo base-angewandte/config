@@ -4,6 +4,13 @@ start-default:  ## start containers
 	docker-compose build --no-cache --pull ${PROJECT_NAME}-django
 	docker-compose up -d --build
 
+.PHONY: start-dev-docker-default
+start-dev-docker-default:  ## start docker development setup
+	docker-compose pull --ignore-pull-failures
+	docker-compose build --pull ${PROJECT_NAME}-django
+	docker-compose up -d --build
+	docker logs -f ${PROJECT_NAME}-django
+
 .PHONY: stop-default
 stop-default:  ## stop containers
 	docker-compose down
