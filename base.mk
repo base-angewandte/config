@@ -34,6 +34,11 @@ ifeq ($(DEBUG),True)
 	@make pre-commit-init
 endif
 
+.PHONY: init-dev-default
+init-dev-default:  ## init django project for local development
+	cd src && python manage.py migrate
+	@make pre-commit-init
+
 .PHONY: restart-gunicorn-default
 restart-gunicorn-default:  ## gracefully restart gunicorn
 	docker compose exec ${PROJECT_NAME}-django bash -c 'kill -HUP `cat /var/run/django.pid`'
