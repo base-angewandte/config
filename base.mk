@@ -30,6 +30,9 @@ git-update-default:  ## git pull as base user
 .PHONY: init-default
 init-default:  ## init django project
 	docker compose exec ${PROJECT_NAME}-django bash -c "pip-sync && python manage.py migrate && python manage.py collectstatic --noinput"
+ifeq ($(DEBUG),True)
+	@make pre-commit-init
+endif
 
 .PHONY: restart-gunicorn-default
 restart-gunicorn-default:  ## gracefully restart gunicorn
