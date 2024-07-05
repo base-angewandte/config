@@ -15,6 +15,3 @@ exclude = '''
 )/
 '''
 skip-string-normalization = true
-
-[tool.commitizen]
-name = "cz_base"
