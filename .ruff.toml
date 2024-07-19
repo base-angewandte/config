@@ -28,7 +28,7 @@ select = [
   "W", # pycodestyle
 ]
 ignore = [
-  "E501", # line-too-longx
+  "E501", # line-too-long
   "RUF010", # explicit-f-string-type-conversion
   "RUF012", # mutable-class-default
 ]
