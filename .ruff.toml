@@ -48,10 +48,10 @@ section-order = [
   "local-folder",
 ]
 
-[format]
-quote-style = "single"
-
-[per-file-ignores]
+[lint.per-file-ignores]
 "tests*.py" = [
   "S101", # allow asserts in tests
 ]
+
+[format]
+quote-style = "single"
