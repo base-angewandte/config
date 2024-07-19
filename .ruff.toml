@@ -50,3 +50,8 @@ section-order = [
 
 [format]
 quote-style = "single"
+
+[per-file-ignores]
+"tests*.py" = [
+  "S101", # allow asserts in tests
+]
