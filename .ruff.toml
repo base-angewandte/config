@@ -31,6 +31,7 @@ ignore = [
   "E501", # line-too-long
   "RUF010", # explicit-f-string-type-conversion
   "RUF012", # mutable-class-default
+  "SIM105", # suppressible-exception
 ]
 
 [lint.isort.sections]
