@@ -82,7 +82,7 @@ pip-compile-upgrade-docker-default:  ## run pip-compile in docker container with
 
 .PHONY: pre-commit-init-default
 pre-commit-init-default:  ## initialize pre-commit
-	python3 -m pip install --upgrade pre-commit
+	uv tool install pre-commit --with pre-commit-uv
 	pre-commit install --install-hooks --overwrite
 
 .PHONY: pre-commit-clean-default
@@ -90,7 +90,10 @@ pre-commit-clean-default:  ## clean pre-commit
 	pre-commit clean
 
 .PHONY: pre-commit-update-default
-pre-commit-update-default: pre-commit-clean-default pre-commit-init-default  ## update pre-commit and hooks
+pre-commit-update-default:  ## update pre-commit and hooks
+	uv tool upgrade pre-commit
+	@make pre-commit-clean-default
+	pre-commit install --install-hooks --overwrite
 
 .PHONY: update-config-default
 update-config-default:  ## update config subtree
