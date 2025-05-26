@@ -72,13 +72,13 @@ pip-compile-upgrade-default:  ## run pip-compile locally with upgrade parameter
 
 .PHONY: pip-compile-docker-default
 pip-compile-docker-default:  ## run pip-compile in docker container
-	docker compose exec ${PROJECT_NAME}-django uv pip compile src/requirements.in -o src/requirements.txt
-	docker compose exec ${PROJECT_NAME}-django uv pip compile src/requirements-dev.in -o src/requirements-dev.txt
+	docker compose exec ${PROJECT_NAME}-django uv pip compile requirements.in -o requirements.txt
+	docker compose exec ${PROJECT_NAME}-django uv pip compile requirements-dev.in -o requirements-dev.txt
 
 .PHONY: pip-compile-upgrade-docker-default
 pip-compile-upgrade-docker-default:  ## run pip-compile in docker container with upgrade parameter
-	docker compose exec ${PROJECT_NAME}-django uv pip compile src/requirements.in -o src/requirements.txt --upgrade
-	docker compose exec ${PROJECT_NAME}-django uv pip compile src/requirements-dev.in -o src/requirements-dev.txt --upgrade
+	docker compose exec ${PROJECT_NAME}-django uv pip compile requirements.in -o requirements.txt --upgrade
+	docker compose exec ${PROJECT_NAME}-django uv pip compile requirements-dev.in -o requirements-dev.txt --upgrade
 
 .PHONY: pre-commit-init-default
 pre-commit-init-default:  ## initialize pre-commit
