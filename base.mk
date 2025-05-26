@@ -29,13 +29,16 @@ git-update-default:  ## git pull as base user
 
 .PHONY: init-default
 init-default:  ## init django project
-	docker compose exec ${PROJECT_NAME}-django bash -c "uv pip sync requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput"
 ifeq ($(DEBUG),True)
+	docker compose exec ${PROJECT_NAME}-django bash -c "uv pip sync requirements-dev.txt && python manage.py migrate && python manage.py collectstatic --noinput"
 	@make pre-commit-init
+else
+	docker compose exec ${PROJECT_NAME}-django bash -c "uv pip sync requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput"
 endif
 
 .PHONY: init-dev-default
 init-dev-default:  ## init django project for local development
+	uv pip sync src/requirements-dev.txt
 	cd src && python manage.py migrate
 	@make pre-commit-init
 
