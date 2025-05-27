@@ -31,7 +31,6 @@ git-update-default:  ## git pull as base user
 init-default:  ## init django project
 ifeq ($(DEBUG),True)
 	docker compose exec ${PROJECT_NAME}-django bash -c "uv pip sync requirements-dev.txt && python manage.py migrate && python manage.py collectstatic --noinput"
-	@make pre-commit-init
 else
 	docker compose exec ${PROJECT_NAME}-django bash -c "uv pip sync requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput"
 endif
@@ -40,7 +39,6 @@ endif
 init-dev-default:  ## init django project for local development
 	uv pip sync src/requirements-dev.txt
 	cd src && python manage.py migrate
-	@make pre-commit-init
 
 .PHONY: restart-gunicorn-default
 restart-gunicorn-default:  ## gracefully restart gunicorn
